@@ -1,0 +1,177 @@
+/********
+LESS VARIABLES AND MIXINS
+********/
+	
+	/**
+	Variables
+	**/
+	@black: #000;
+	@white: #FFF;
+	@darkGrey: #333333;
+	@lightGrey: #eeeeee;
+	@mediumGrey: #8e8e8e;
+	@darkBlue: #186aa3;
+	@lightBlue: #1d91d0;
+	
+	
+	/**
+	Mixins
+	**/
+	/* Text and Background Colors */
+		.text-black {
+			color: @black;
+		}
+		.text-white {
+			color: @white;
+		}
+		.text-darkGrey {
+			color: @darkGrey;
+		}
+		.text-lightGrey {
+			color: @lightGrey;
+		}
+		.text-mediumGrey {
+			color: @mediumGrey;
+		}
+		.text-darkBlue {
+			color: @darkBlue;
+		}
+		.text-lightBlue {
+			color: @lightBlue;
+		}
+		
+		.black, .btn-black {
+			background-color: @black;
+		}
+		.white, .btn-white {
+			background-color: @white;
+		}
+		.darkGrey, .btn-darkGrey {
+			background-color: @darkGrey;
+		}
+		.lightGrey, .btn-lightGrey {
+			background-color: @lightGrey;
+		}
+		.mediumGrey, .btn-mediumGrey {
+			background-color: @mediumGrey;
+		}
+		.darkBlue, .btn-darkBlue {
+			background-color: @darkBlue;
+		}
+		.lightBlue, .btn-lightBlue {
+			background-color: @lightBlue;
+		}
+		
+		.gradientBlue {
+			background-image: -webkit-linear-gradient(top, @lightBlue 0%, @darkBlue 100%);
+			background-image: linear-gradient(to bottom, @lightBlue 0%, @darkBlue 100%);
+			background-repeat: repeat-x;
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@lightBlue', endColorstr='@darkBlue', GradientType=0);
+			filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+		}
+		
+		
+	/*Font Families*/
+		.source-sans {
+			font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;	
+		}
+		.droid-sans {
+			font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+		}
+		.arvo {
+			font-family: 'Arvo', Lucida Console, Monaco, Tahoma, sans-serif;
+		}
+
+	
+	/*Font Weights and styles */
+		.normal {
+			font-weight: 400;
+		}
+		.bold {
+			font-weight: 700;
+		}
+		.italic {
+			font-style: italic;
+		}
+		.uppercase {
+			text-transform: uppercase;
+		}
+		.underline {
+			text-decoration: underline;
+		}
+	
+	/*Darken/Lighten*/
+		.light-dark (dark; @color) {
+		  background-color: darken(@color, 10%);
+		}
+		.light-dark (light; @color) {
+		  background-color: lighten(@color, 10%);
+		}
+	
+	/*Text Shadow*/
+		.text-shadow (@x: 1px; @y: 1px; @blur: 1px; @color: @darkGrey) {
+			text-shadow: @arguments;
+		}
+
+	/*Border Radius*/
+		.border-radius (@radius: 5px) {
+		-webkit-border-radius: @arguments;
+		-moz-border-radius: @arguments;
+		border-radius: @arguments;
+		}
+		.border-radius-top (@topleft: 5px; @topright: 5px) {
+		-webkit-border-top-left-radius: @topleft;
+		-webkit-border-top-right-radius: @topright;
+		-moz-border-radius-topleft: @topleft;
+		-moz-border-radius-topright: @topright;
+		border-top-left-radius: @topleft;
+		border-top-right-radius: @topright;
+		}
+		.border-radius-bottom (@bottomleft: 5px; @bottomright: 5px) {
+		-webkit-border-bottom-right-radius: @bottomright;
+		-webkit-border-bottom-left-radius: @bottomleft;
+		-moz-border-radius-bottomright: @bottomright;
+		-moz-border-radius-bottomleft: @bottomleft;
+		border-bottom-right-radius: @bottomright;
+		border-bottom-left-radius: @bottomleft;
+		}
+		.border-radius-right (@topright: 5px; @bottomright: 5px) {
+		-webkit-border-top-right-radius: @topright;
+		-webkit-border-bottom-right-radius: @bottomright;
+		-moz-border-radius-topright: @topright;
+		-moz-border-radius-bottomright: @bottomright;
+		border-top-right-radius: @topright;
+		border-bottom-right-radius: @bottomright;
+		}
+		.border-radius-left (@topleft: 5px; @bottomleft: 5px) {
+		-webkit-border-top-left-radius: @topleft;
+		-webkit-border-bottom-left-radius: @bottomleft;
+		-moz-border-radius-topleft: @topleft;
+		-moz-border-radius-bottomleft: @bottomleft;
+		border-top-left-radius: @topleft;
+		border-bottom-left-radius: @bottomleft;
+		}
+		
+	/*Box Shadow*/
+		.box-shadow (@x: 1px; @y: 1px; @blur: 1px; @color: @darkGrey) {
+		  box-shadow: @arguments;
+		  -moz-box-shadow: @arguments;
+		  -webkit-box-shadow: @arguments;
+		}
+		
+	/*Margin/Padding*/
+		.margin (@topbot: 20px; @leftright: 0px) {
+			margin: @arguments;
+		}
+		.padding(@topbot: 20px; @leftright: 0px) {
+			padding: @arguments;
+		}
+		
+	/*Misc*/
+		.transition {
+			-webkit-transition: all 0.25s ease-in-out;
+			-moz-transition: all 0.25s ease-in-out;
+			-ms-transition: all 0.25s ease-in-out;
+			-o-transition: all 0.25s ease-in-out;
+			transition: all 0.25s ease-in-out;
+		}
