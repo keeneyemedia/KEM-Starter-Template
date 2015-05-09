@@ -1,9 +1,8 @@
 <?php
 /**
- * The template for displaying all pages.
+ * The Template for displaying all single posts
  */
 ?>
-
 <?php get_header(); ?>
 
 	<?php get_template_part('parts/pages/page', 'top'); ?>
@@ -13,6 +12,8 @@
 			the_content();
 			comments_template( '', true );
 		endwhile; ?>
+		
+		<?php get_template_part('parts/pages/single-pagination'); ?>
 	
 	<?php get_template_part('parts/pages/page', 'bottom'); ?>
 
