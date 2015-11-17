@@ -41,3 +41,18 @@ include_once( get_stylesheet_directory() . '/functions/advanced-custom-fields-pr
 	    'parent_slug'	=> 'site-general-settings',
 	));
 }*/
+
+
+//Hide "PUBLISH" metabox on Documentation page
+function hide_acf_documentation_actions(){
+	echo '
+		<style type="text/css">
+			#submitdiv {
+				display:none;
+			}
+		</style>
+	';
+}
+if ( $_GET['page'] && $_GET['page'] == 'acf-options-documentation' ) {
+	add_action( 'admin_head', 'hide_acf_documentation_actions' );
+}
