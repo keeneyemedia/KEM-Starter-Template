@@ -81,11 +81,11 @@ Security
 	define('DISALLOW_FILE_EDIT', true);
 	
 	
-	//REMOVE WP VERSION FROM HEADER META
-	function remove_wp_version() {
-	     return '';
-	}
-	add_filter('the_generator', 'remove_wp_version');
+	//REMOVE Unnecessary Head Code
+	remove_action('wp_head', 'wp_generator');
+	remove_action ('wp_head', 'rsd_link');
+	remove_action( 'wp_head', 'wlwmanifest_link');
+	remove_action( 'wp_head', 'wp_shortlink_wp_head');
 	
 
 /* ========================================================================================================================
