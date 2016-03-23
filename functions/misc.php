@@ -90,45 +90,39 @@ Security
 
 /* ========================================================================================================================
 User Access
-======================================================================================================================== */		
+======================================================================================================================== */
 	//HIDE SOME MENU ITEMS - requires creating 'edit_custom_fields' capability
 	/*function hide_admin_menu() {
-		if(current_user_can('edit_custom_fields')) {
+		if(current_user_can('install_themes')) {
 			echo '<style type="text/css">#toplevel_page_edit-post_type-cfs,#toplevel_page_edit-post_type-acf, #adminmenu .menu-icon-settings{display:block !important;}</style>';
 		} else {
 			echo '<style type="text/css">#toplevel_page_edit-post_type-cfs,#toplevel_page_edit-post_type-acf, #adminmenu .menu-icon-settings{display:none;}</style>';
 		}
 	}
 	add_action('admin_head', 'hide_admin_menu');*/
-	
-	
-	//ALLOW EDITORS ACCESS TO GRAVITY FORMS
-	function add_grav_forms(){
-		$role = get_role('editor');
-		$role->add_cap('gform_full_access');
-	}
-	add_action('admin_init','add_grav_forms');
-	
-	
-	//Hide ACF menu item from the admin menu - CSS version included above to prevent 'editor's as well
-	function remove_acf_menu()
-	{
-	    // provide a list of usernames who can edit custom field definitions here
+
+
+	//Hide menu items for "editors" (user capability: 'install_themes') - CSS version above if necessary
+	function remove_menus_for_editors() {
+	    /*
+	    //provide a list of usernames who can edit custom field definitions here
+	    //use in conjunction with following if statement:   if( !in_array( $current_user->user_login, $admins ) ) { //not in list }
 	    $admins = array( //comma separated
 	        'keeneyemedia'//,
 	    );
-	 
+	    */
+
 	    // get the current user
 	    $current_user = wp_get_current_user();
-	 
+
 	    // match and remove if needed
-	    if( !in_array( $current_user->user_login, $admins ) )
-	    {
-	        remove_menu_page('edit.php?post_type=acf');
+	    if ( !current_user_can( 'install_themes' ) ) {
+			remove_menu_page('options-general.php');
+			remove_menu_page('tools.php');
 	    }
-	 
+
 	}
-	add_action( 'admin_menu', 'remove_acf_menu', 999 );
+	add_action( 'admin_menu', 'remove_menus_for_editors', 999 );
 
 
 ?>

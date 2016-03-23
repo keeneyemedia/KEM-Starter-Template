@@ -20,6 +20,9 @@ Required external files
 	
 	//MISC
 	require_once( 'functions/misc.php' );
+	
+	//HELP
+	require_once( 'functions/help.php' );
 		
 	
 	
