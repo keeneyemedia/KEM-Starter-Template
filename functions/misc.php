@@ -7,8 +7,8 @@ if ( !function_exists( 'kem_pagination' ) ) {
 	
 	function kem_pagination() {
 		
-		$prev_arrow = is_rtl() ? '&rarr;' : '&larr;';
-		$next_arrow = is_rtl() ? '&larr;' : '&rarr;';
+		$prev_arrow = is_rtl() ? '<i class="fa fa-caret-right"></i>' : '<i class="fa fa-caret-left"></i>';
+		$next_arrow = is_rtl() ? '<i class="fa fa-caret-left"></i>' : '<i class="fa fa-caret-right"></i>';
 		
 		global $wp_query;
 		$total = $wp_query->max_num_pages;

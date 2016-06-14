@@ -20,6 +20,14 @@ else if ( is_author() ) {
 	echo get_the_author();
 }
 
+else if (is_post_type_archive()) {
+	post_type_archive_title();
+}
+else if (is_tax()) {
+	$tax = $wp_query->get_queried_object();
+	echo $tax->name;
+}
+
 else if( class_exists( 'WooCommerce' ) ) {
 	if(is_product_category()) {
 		single_cat_title();
