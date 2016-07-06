@@ -123,6 +123,44 @@ User Access
 
 	}
 	add_action( 'admin_menu', 'remove_menus_for_editors', 999 );
+	
+	
+	//Redirect restricted pages to Dashboard for Editors
+	function redirect_admin_for_editors() {
+		global $pagenow;
+		$current_user = wp_get_current_user();
+		
+		if(is_admin()) {
+		    if ( !current_user_can( 'install_themes' ) ) {
+		    
+			    if(
+			    $pagenow == 'themes.php' && isset($_GET['page']) && $_GET['page'] == 'ot-theme-options' ||  //this matches "/wp-admin/themes.php?page=ot-theme-options"
+			    /*
+			    $pagenow == 'upload.php' ||
+			    $pagenow == 'edit-comments.php' ||
+			    $pagenow == 'theme-editor.php' ||
+			    $pagenow == 'customize.php' ||
+			    $pagenow == 'plugins.php' ||
+			    $pagenow == 'plugins-install.php' ||
+			    $pagenow == 'plugins-editor.php' ||
+			    $pagenow == 'tools.php' ||
+			    $pagenow == 'options-general.php' ||
+			    $pagenow == 'options-writing.php' ||
+			    $pagenow == 'options-reading.php' ||
+			    $pagenow == 'options-discussion.php' ||
+			    $pagenow == 'options-media.php' ||
+			    $pagenow == 'options-permalink.php' ||
+			    $pagenow == 'plugins-reading.php' ||
+			    $pagenow == 'plugins-reading.php' ||
+			    $pagenow == 'plugins-reading.php'*/
+			    ) {
+			        wp_redirect(admin_url());
+			        exit;
+		    	}
+		    }
+		}
+	}
+	add_action( 'admin_init', 'redirect_admin_for_editors', 999 );
 
 
 ?>
