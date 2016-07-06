@@ -134,7 +134,8 @@ User Access
 		    if ( !current_user_can( 'install_themes' ) ) {
 		    
 			    if(
-			    $pagenow == 'themes.php' && isset($_GET['page']) && $_GET['page'] == 'ot-theme-options' ||  //this matches "/wp-admin/themes.php?page=ot-theme-options"
+			    $pagenow == 'themes.php' && isset($_GET['page']) && $_GET['page'] == 'ot-theme-options'  //this matches "/wp-admin/themes.php?page=ot-theme-options"
+			    //||
 			    /*
 			    $pagenow == 'upload.php' ||
 			    $pagenow == 'edit-comments.php' ||
