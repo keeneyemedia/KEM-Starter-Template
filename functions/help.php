@@ -8,8 +8,8 @@ function add_dashboard_help_tab() {
     $screen->remove_help_tabs();
 	
 		$tab_content = __('
-		<p><a href="http://premium.wpmudev.org/projects/category/videos/" target="_blank">Generic Tutorials<br>
-		General videos explaining standard functions of the Wordpress system.</p>
+		<p><a href="https://ithemes.com/tutorial/category/wordpress-101/" target="_blank">Generic Tutorials<br>
+		General videos explaining standard functions of the Wordpress system. Make sure and click through the multiple pages to see them all!</p>
 		
 		<p><a href="/nifty-link/" target="_blank">Overview</a> <span class="dashicons dashicons-format-video"></span><br>
 		Intro to site, explanation of <em>Dashboard</em>, <em>Media</em>, <em>Forms</em>, and <em>Comments</em>.</p>
