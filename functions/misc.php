@@ -4,16 +4,18 @@ Pagination
 ======================================================================================================================== */
 // Numbered Pagination
 if ( !function_exists( 'kem_pagination' ) ) {
-	
 	function kem_pagination() {
 		
 		$prev_arrow = is_rtl() ? '<i class="fa fa-caret-right"></i>' : '<i class="fa fa-caret-left"></i>';
 		$next_arrow = is_rtl() ? '<i class="fa fa-caret-left"></i>' : '<i class="fa fa-caret-right"></i>';
 		
+		$prev_arrow = is_rtl() ? 'Previous <i class="fa fa-arrow-right"></i>' : '<i class="fa fa-arrow-left"></i> Previous';
+		$next_arrow = is_rtl() ? '<i class="fa fa-arrow-left"></i> Next' : 'Next <i class="fa fa-arrow-right"></i>';
+		
 		global $wp_query;
 		$total = $wp_query->max_num_pages;
 		$big = 999999999; // need an unlikely integer
-		if( $total > 1 )  {
+		if( $total > 1 )  :
 			 if( !$current_page = get_query_var('paged') )
 				 $current_page = 1;
 			 if( get_option('permalink_structure') ) {
@@ -21,19 +23,26 @@ if ( !function_exists( 'kem_pagination' ) ) {
 			 } else {
 				 $format = '&paged=%#%';
 			 }
-			echo paginate_links(array(
+			$pages = paginate_links(array(
 				'base'			=> str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
 				'format'		=> $format,
 				'current'		=> max( 1, get_query_var('paged') ),
 				'total' 		=> $total,
 				'mid_size'		=> 3,
-				'type' 			=> 'list',
+				'type' 			=> 'array',
 				'prev_text'		=> $prev_arrow,
 				'next_text'		=> $next_arrow,
 			 ) );
-		}
+			 
+
+			echo '<div class="pagination-wrap"><ul class="pagination">';
+			foreach ( $pages as $page ) {
+				echo "<li>$page</li>";
+			}
+			echo '</ul></div>';
+		endif;
+		
 	}
-	
 }
 
 
