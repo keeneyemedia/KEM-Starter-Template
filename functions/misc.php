@@ -100,6 +100,13 @@ Security
 /* ========================================================================================================================
 User Access
 ======================================================================================================================== */
+	//SHOW ADMIN MENU NAMES, FOR HIDING BELOW
+	function wpse_136058_debug_admin_menu() {
+	    echo '<pre>' . print_r( $GLOBALS[ 'menu' ], TRUE) . '</pre>';
+	}
+	//add_action( 'admin_init', 'wpse_136058_debug_admin_menu' );
+	
+
 	//HIDE SOME MENU ITEMS - requires creating 'edit_custom_fields' capability
 	/*function hide_admin_menu() {
 		if(current_user_can('install_themes')) {

@@ -32,12 +32,15 @@ function kem_element_shortcode( $atts, $content = null ) {
 		'class' => '',
 		'name' => '',
 		'type' => '',
+		'style' => '',
 	), $atts ) );
 	
 	$id = esc_attr($id);
 	$class = esc_attr($class);
 	$name = esc_attr($name);
 	$type = esc_attr($type);
+	$style = esc_attr($style);
+	
 	if (!$type) {
 		$type = 'div';
 	}
@@ -52,6 +55,9 @@ function kem_element_shortcode( $atts, $content = null ) {
 	}
 	if ($name) {
 		$output .= ' name="' . $name . '"';
+	}
+	if ($style) {
+		$output .= ' style="' . $style . '"';
 	}
 	$output .= '>';
 	$output .= do_shortcode($content);

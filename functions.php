@@ -72,8 +72,10 @@ Scripts
 		wp_enqueue_script( 'kem-scripts' );
 		
 		
-		//COMPILED CSS - Flexslider, PrettyPhoto, Superfish
-	    wp_register_style('kem-styles', get_template_directory_uri() . '/css/site.css', '', '042214');
+		//COMPILED CSS - Flexslider, PrettyPhoto, Superfish (with automatic versioning)
+		$stylepath = get_stylesheet_directory() . '/css/site.css';
+		$ver = filemtime( $stylepath );
+	    wp_register_style('kem-styles', get_template_directory_uri() . '/css/site.css', '', $ver);
 	    wp_enqueue_style( 'kem-styles' );
 	    
 
